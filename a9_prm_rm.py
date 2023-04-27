@@ -83,8 +83,9 @@ def localPlanner(qa, qb):
     N = the number of intermediate steps between two configurations
     i = 1, 2, ..., N
     '''
-    qPrime = (qb - qa)/10+1
-    path = [qa + i * qPrime for i in range(1, 10+1)]
+    n = len(obs)
+    qPrime = (qb - qa)/n+1
+    path = [qa + i * qPrime for i in range(1, n+1)]
     
     for q in path:
         for o in obs:
@@ -271,8 +272,9 @@ def main():
     # STUDENT TODO: Check for collision free start and goal configurations
     # Part 3.1
     
-    if checkStartGoal(start, goal) == True:
-        print("Start and goal configurations are collision free")
+    if checkStartGoal(start, goal) == False:
+        print("Start and goal configurations are not collision free")
+        return
         
 
 
